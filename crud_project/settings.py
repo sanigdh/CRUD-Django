@@ -37,9 +37,15 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'rest_framework',
+#    'corsheader',
+    'EmployeeApp'
 ]
 
+#CORS_ORIGIN_ALLOW_ALL = True
+
 MIDDLEWARE = [
+#    'corsheader.middleware.CorsMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -72,11 +78,16 @@ WSGI_APPLICATION = 'crud_project.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
-
+import pymysql
+pymysql.install_as_MySQLdb()
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'EmployeeApp',
+        'USER': 'sanigdh',
+        'PASSWORD':'sanigdh123',
+        'HOST' :'localhost',
+        'PORT':'3306'
     }
 }
 
